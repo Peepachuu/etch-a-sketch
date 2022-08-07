@@ -1,5 +1,6 @@
 const grid = document.querySelector(".grid");
-let gridSize = 16;
+let mouseDown = false;
+let gridSize = 64;
 
 for (let x = 0; x < gridSize; ++x) {
     let gridRow = document.createElement("div");
@@ -8,6 +9,21 @@ for (let x = 0; x < gridSize; ++x) {
     for (let y = 0; y < gridSize; ++y) {
         const div = document.createElement("div");
         div.classList.add("grid-box");
+        div.addEventListener('mousedown', setMouseState);
+        div.addEventListener('mousemove', colorBox);
+        div.addEventListener('mouseup', setMouseState);
         gridRow.appendChild(div);
     }
+}
+
+function setMouseState(e) {
+    var flags = e.buttons !== undefined ? e.buttons : e.which;
+    mouseDown = (flags & 1) === 1;
+}
+
+function colorBox(e) {
+    if (!mouseDown)
+        return;
+    const colorPicker = document.querySelector("#color-picker");
+    e.target.style.backgroundColor = colorPicker.value;
 }
