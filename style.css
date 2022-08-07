@@ -1,0 +1,16 @@
+.grid-box {
+    background-color: white;
+    border: 1px solid black;
+    flex: 1;
+}
+
+.grid-row {
+    flex: 1;
+    display: flex;
+}
+.grid {
+    width: 960px;
+    height: 960px;
+    display: flex;
+    flex-direction: column;
+}
