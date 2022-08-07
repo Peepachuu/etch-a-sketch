@@ -1,6 +1,6 @@
 const grid = document.querySelector(".grid");
 let mouseDown = false;
-let gridSize = 64;
+let gridSize = 32;
 
 for (let x = 0; x < gridSize; ++x) {
     let gridRow = document.createElement("div");
@@ -14,6 +14,15 @@ for (let x = 0; x < gridSize; ++x) {
         div.addEventListener('mouseup', setMouseState);
         gridRow.appendChild(div);
     }
+}
+
+btns = document.querySelectorAll("button");
+btns.forEach(btn => {
+    btn.addEventListener('click', toggle);
+});
+
+function toggle(e) {
+    e.target.classList.toggle("toggle");
 }
 
 function setMouseState(e) {
