@@ -1,5 +1,4 @@
 const grid = document.querySelector(".grid");
-const currentMode = new Map();
 let mouseDown = false;
 let gridSize = 32;
 
@@ -10,7 +9,10 @@ for (let x = 0; x < gridSize; ++x) {
     for (let y = 0; y < gridSize; ++y) {
         const div = document.createElement("div");
         div.classList.add("grid-box");
-        div.addEventListener('mousedown', setMouseState);
+        div.addEventListener('mousedown', (e) => {
+            setMouseState(e);
+            colorBox(e);
+        });
         div.addEventListener('mousemove', colorBox);
         div.addEventListener('mouseup', setMouseState);
         gridRow.appendChild(div);
@@ -20,33 +22,26 @@ for (let x = 0; x < gridSize; ++x) {
 btns = document.querySelectorAll("button");
 btns.forEach(btn => {
     btn.addEventListener('click', toggle);
-    currentMode.set(e.target.className, false);
+    if (btn.className == 'color-mode') {
+        btn.classList.toggle("toggle");
+    }
 });
-currentMode.set('color-mode', true);
 
 function toggle(e) {
     btns.forEach(btn => {
         if (btn != e.target) {
             btn.classList.remove("toggle");
-            currentMode.set(e.target.className, false);
         }
     });
     e.target.classList.toggle("toggle");
-    currentMode(e.target.className, true);
 }
 
 function setMouseState(e) {
-    var flags = e.buttons !== undefined ? e.buttons : e.which;
+    let flags = e.buttons !== undefined ? e.buttons : e.which;
     mouseDown = (flags & 1) === 1;
 }
 
 function interactWithBox(e) {
-    if (currentMode.get('color-mode'))
-        colorBox(e);
-    else if (currentMode.get('darken-mode'))
-        darkenBox(e);
-    else if (currentMode.get('rainbow-mode'))
-        rainbowBox(e);
 }
 
 function colorBox(e) {
@@ -57,7 +52,10 @@ function colorBox(e) {
 }
 
 function darkenBox(e) {
-
+    if (!mouseDown)
+        return;
+    const color = e.target.style.backgroundColor;
+    console.log(color);
 }
 
 function rainbowBox(e) {

@@ -8,6 +8,7 @@
     flex: 1;
     display: flex;
 }
+
 .grid {
     width: 960px;
     height: 960px;
@@ -19,6 +20,7 @@
     display: flex;
     justify-content: space-around;
 }
+
 .header {
     text-align: center;
     color: #F05523;
