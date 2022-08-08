@@ -1,4 +1,5 @@
 const grid = document.querySelector(".grid");
+const currentMode = new Map();
 let mouseDown = false;
 let gridSize = 32;
 
@@ -19,10 +20,19 @@ for (let x = 0; x < gridSize; ++x) {
 btns = document.querySelectorAll("button");
 btns.forEach(btn => {
     btn.addEventListener('click', toggle);
+    currentMode.set(e.target.className, false);
 });
+currentMode.set('color-mode', true);
 
 function toggle(e) {
+    btns.forEach(btn => {
+        if (btn != e.target) {
+            btn.classList.remove("toggle");
+            currentMode.set(e.target.className, false);
+        }
+    });
     e.target.classList.toggle("toggle");
+    currentMode(e.target.className, true);
 }
 
 function setMouseState(e) {
@@ -30,9 +40,26 @@ function setMouseState(e) {
     mouseDown = (flags & 1) === 1;
 }
 
+function interactWithBox(e) {
+    if (currentMode.get('color-mode'))
+        colorBox(e);
+    else if (currentMode.get('darken-mode'))
+        darkenBox(e);
+    else if (currentMode.get('rainbow-mode'))
+        rainbowBox(e);
+}
+
 function colorBox(e) {
     if (!mouseDown)
         return;
     const colorPicker = document.querySelector("#color-picker");
     e.target.style.backgroundColor = colorPicker.value;
+}
+
+function darkenBox(e) {
+
+}
+
+function rainbowBox(e) {
+
 }
