@@ -50,10 +50,6 @@ function switchMode(e) {
     e.target.classList.toggle("toggle");
 }
 
-function toggleSetting() {
-
-}
-
 function colorBox(e) {
     if (!mouseDown)
         return;
@@ -108,6 +104,19 @@ function createNewGrid() {
             div.addEventListener('mouseenter', interactWithBox);
             div.addEventListener('mouseup', setMouseState);
             gridRow.appendChild(div);
+        }
+    }
+}
+
+const clearBtn = document.querySelector("#clear");
+clearBtn.addEventListener('click', clearGrid);
+
+function clearGrid() {
+    for (let x = 0; x < gridSize; ++x) {
+        const gridRow = grid.childNodes[x];
+        for (let y = 0; y < gridSize; ++y) {
+            const gridRowChildren = gridRow.childNodes;
+            (gridRowChildren[y]).style.backgroundColor = "#ffffff";
         }
     }
 }
