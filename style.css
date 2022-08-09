@@ -1,6 +1,5 @@
 .grid-box {
     background-color: white;
-    border: 1px solid #748DA6;
     flex: 1;
 }
 
@@ -32,6 +31,7 @@ div {
 .header {
     text-align: center;
     color: #748DA6;
+    font-size: 50px;
 }
 
 ul {
@@ -63,6 +63,34 @@ button.toggle {
     color: #D3CEDF;
 }
 
-input {
-    border-color: #748DA6;
+#color-picker {
+    background-color: transparent;
+    border: none;
+}
+
+#grid-size {
+    appearance: none;
+    border-radius: 4px;
+    height: 10px;
+}
+#grid-size::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #748DA6;
+}
+
+#grid-size::-moz-range-thumb {
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #748DA6;
+}
+
+.grid-size-text {
+    text-align: center;
+    color: #748DA6;
+    font-size: 20px;
 }

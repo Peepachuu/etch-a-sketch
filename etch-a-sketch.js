@@ -3,22 +3,7 @@ let mouseDown = false;
 let gridSize = 32;
 let currentMode = "color";
 
-for (let x = 0; x < gridSize; ++x) {
-    let gridRow = document.createElement("div");
-    gridRow.classList.add("grid-row");
-    grid.appendChild(gridRow);
-    for (let y = 0; y < gridSize; ++y) {
-        const div = document.createElement("div");
-        div.classList.add("grid-box");
-        div.addEventListener('mousedown', (e) => {
-            setMouseState(e);
-            interactWithBox(e);
-        });
-        div.addEventListener('mouseenter', interactWithBox);
-        div.addEventListener('mouseup', setMouseState);
-        gridRow.appendChild(div);
-    }
-}
+createNewGrid();
 
 function interactWithBox(e) {
     if (currentMode == "color") {
@@ -83,12 +68,46 @@ function rainbowBox(e) {
     e.target.style.backgroundColor = "#" + color;
 }
 
-function toggleGridLines() {
-
-}
 
 function eraseBox(e) {
     if (!mouseDown)
         return;
     e.target.style.backgroundColor = "#ffffff";
+}
+
+const gridSizeSlider = document.querySelector("#grid-size");
+gridSizeSlider.addEventListener("change", () => {
+    gridSize = gridSizeSlider.valueAsNumber;
+    removeGridChildren();
+    createNewGrid();
+});
+
+const gridSizeText = document.querySelector(".grid-size-text");
+gridSizeSlider.addEventListener("input", () => {
+    gridSizeText.textContent = `${gridSizeSlider.value} x ${gridSizeSlider.value}`;
+});
+
+function removeGridChildren() {
+    while (grid.firstChild) {
+        grid.removeChild(grid.lastChild);
+    }
+}
+
+function createNewGrid() {
+    for (let x = 0; x < gridSize; ++x) {
+        let gridRow = document.createElement("div");
+        gridRow.classList.add("grid-row");
+        grid.appendChild(gridRow);
+        for (let y = 0; y < gridSize; ++y) {
+            const div = document.createElement("div");
+            div.classList.add("grid-box");
+            div.addEventListener('mousedown', (e) => {
+                setMouseState(e);
+                interactWithBox(e);
+            });
+            div.addEventListener('mouseenter', interactWithBox);
+            div.addEventListener('mouseup', setMouseState);
+            gridRow.appendChild(div);
+        }
+    }
 }

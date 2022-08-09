@@ -19,7 +19,13 @@
                 <li><button class="eraser" id="eraser">Eraser</button></li>
             </ul>
             <ul class="grid-settings">
-                <li><button class="gridlines">Toggle Grid Lines</button></li>
+                <li><button class="clear" id="clear">Clear</button></li>
+                <li>
+                    <div>
+                        <input type="range" min="1" max="64" step="1" id="grid-size">
+                        <div class="grid-size-text">32 x 32</div>
+                    </div>
+                </li>
             </ul>
         </div>
         <div class="grid"></div>
