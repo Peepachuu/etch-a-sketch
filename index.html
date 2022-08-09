@@ -12,12 +12,14 @@
     <h1 class="header">Etch-a-sketch</h1>
     <div class="contents">
         <div class="settings"> 
-            <ul>
+            <ul class="modes">
                 <li><input type="color" name="color" id="color-picker"></li>
-                <li><button class="color-mode">Color Mode</button></li>
-                <li><button class="rainbow-mode">Rainbow Mode</button></li>
-                <li><button class="darken-mode">Darken Mode</button></li>
-                <li><button class="grid-mode">Toggle Grid Lines</button></li>
+                <li><button class="color" id="color">Color</button></li>
+                <li><button class="rainbow" id="rainbow">Rainbow</button></li>
+                <li><button class="eraser" id="eraser">Eraser</button></li>
+            </ul>
+            <ul class="grid-settings">
+                <li><button class="gridlines">Toggle Grid Lines</button></li>
             </ul>
         </div>
         <div class="grid"></div>
