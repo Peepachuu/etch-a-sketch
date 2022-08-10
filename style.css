@@ -1,3 +1,9 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+
 .grid-box {
     background-color: white;
     flex: 1;
@@ -16,8 +22,8 @@ div {
 }
 
 .grid {
-    width: 960px;
-    height: 960px;
+    width: 540px;
+    height: 540px;
     display: flex;
     flex-direction: column;
     border: 2px solid #748DA6;
@@ -32,6 +38,7 @@ div {
     text-align: center;
     color: #748DA6;
     font-size: 50px;
+    margin-top: 5px;
 }
 
 ul {
@@ -93,4 +100,21 @@ button.toggle {
     text-align: center;
     color: #748DA6;
     font-size: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+button:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+
+.footer {
+    text-align: center;
+    padding: 16px 0px;
+    font-size: 30px;
+    color: #748DA6;
 }
