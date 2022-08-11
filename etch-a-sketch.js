@@ -38,13 +38,10 @@ function switchMode(e) {
             mode.classList.remove("toggle");
     });
     if (e.target.id == "color") {
-        interactWithBox = colorBox;
         currentMode = "color";
     } else if (e.target.id == "eraser") {
-        interactWithBox = eraseBox;
         currentMode = "eraser";
     } else if (e.target.id == "rainbow") {
-        interactWithBox = rainbowBox;
         currentMode = "rainbow";
     }
     e.target.classList.toggle("toggle");
